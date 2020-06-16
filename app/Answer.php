@@ -32,7 +32,7 @@ class Answer extends Model
         });
 
         static::deleted(function ($answer) {
-            $question = $answer->question;
+            $answer->question->decrement('answers_count');
         });
     }
 
@@ -46,7 +46,7 @@ class Answer extends Model
         return $this->isBest() ? 'vote-accepted' : '';
     }
 
-    public function getIsBestArrtibute()
+    public function getIsBestAttribute()
     {
         return $this->isBest();
     }
