@@ -4,7 +4,6 @@
         $firstURISegment = 'questions';
     @endphp
 @elseif ($model instanceof App\Answer)
-{{ dd($model)}}
     @php
         $name = 'answer';
         $firstURISegment = 'answers';
