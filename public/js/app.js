@@ -58940,7 +58940,13 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['answer']
+    props: ['answer'],
+
+    data: function data() {
+        return {
+            editing: false
+        };
+    }
 });
 
 /***/ }),
