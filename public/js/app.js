@@ -58944,8 +58944,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            editing: false
+            editing: false,
+            body: this.answer.body,
+            bodyHtml: this.answer.body_html,
+            id: this.answer.id,
+            questionId: this.answer.question_id
         };
+    },
+
+
+    methods: {
+        update: function update() {
+            var _this = this;
+
+            axios.patch("/questions/" + this.quesitonId + "/answers/" + this.id, {
+                body: this.body
+            }).then(function (res) {
+                console.log(res);
+                _this.editing = false;
+                _this.bodyHtml = res.data.body_html;
+                alert(res.data.message);
+            }).catch(function (err) {
+                console.log("Something went wrong");
+            });
+        }
     }
 });
 
