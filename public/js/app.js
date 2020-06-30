@@ -60116,11 +60116,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['answers', 'count'],
+    props: ['question'],
+
+    data: function data() {
+        return {
+            questionId: this.question.id,
+            count: this.question.answers_count,
+            answers: []
+        };
+    },
+    created: function created() {
+        this.fetch('/questions/' + this.questionId + '/answers');
+    },
+
+
+    methods: {
+        fetch: function fetch(endpoint) {
+            axios.get(endpoint).then(function (res) {
+                console.log(res);
+            });
+        }
+    },
 
     computed: {
         title: function title() {
@@ -60474,7 +60499,9 @@ var render = function() {
                     key: answer.id,
                     attrs: { answer: answer }
                   })
-                })
+                }),
+                _vm._v(" "),
+                _vm._m(0)
               ],
               2
             )
@@ -60483,7 +60510,18 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center mt-3" }, [
+      _c("button", { staticClass: "btn btn-outline-secondary" }, [
+        _vm._v("Load more answers")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
