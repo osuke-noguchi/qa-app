@@ -9,9 +9,9 @@
                     <hr>
 
                     <answer v-for="answer in answers" :answer="answer" :key="answer.id"></answer>
-                    
-                    <div class="text-center mt-3">
-                        <button class="btn btn-outline-secondary">Load more answers</button>
+
+                    <div class="text-center mt-3" v-if="nextUrl">
+                        <button @click.prevent="fetch(nextUrl)" class="btn btn-outline-secondary">Load more answers</button>
                     </div>
 
                 </div>
@@ -30,7 +30,8 @@ export default {
         return  {
             questionId: this.question.id,
             count: this.question.answers_count,
-            answers: []
+            answers: [],
+            nextUrl: null
         }
     },
 
@@ -41,8 +42,9 @@ export default {
     methods: {
         fetch (endpoint) {
             axios.get(endpoint)
-            .then(res => {
-                console.log(res);
+            .then(({data}) => {
+                this.answers.push(...data.data);
+                this.nextUrl = data.next_page_url;
             })
         }
     },

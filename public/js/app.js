@@ -60099,6 +60099,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Answer_vue__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Answer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Answer_vue__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 //
 //
 //
@@ -60131,7 +60133,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             questionId: this.question.id,
             count: this.question.answers_count,
-            answers: []
+            answers: [],
+            nextUrl: null
         };
     },
     created: function created() {
@@ -60141,8 +60144,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         fetch: function fetch(endpoint) {
-            axios.get(endpoint).then(function (res) {
-                console.log(res);
+            var _this = this;
+
+            axios.get(endpoint).then(function (_ref) {
+                var _answers;
+
+                var data = _ref.data;
+
+                (_answers = _this.answers).push.apply(_answers, _toConsumableArray(data.data));
+                _this.nextUrl = data.next_page_url;
             });
         }
     },
@@ -60501,7 +60511,23 @@ var render = function() {
                   })
                 }),
                 _vm._v(" "),
-                _vm._m(0)
+                _vm.nextUrl
+                  ? _c("div", { staticClass: "text-center mt-3" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-outline-secondary",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.fetch(_vm.nextUrl)
+                            }
+                          }
+                        },
+                        [_vm._v("Load more answers")]
+                      )
+                    ])
+                  : _vm._e()
               ],
               2
             )
@@ -60510,18 +60536,7 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center mt-3" }, [
-      _c("button", { staticClass: "btn btn-outline-secondary" }, [
-        _vm._v("Load more answers")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
