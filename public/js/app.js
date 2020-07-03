@@ -14643,7 +14643,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(73);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
@@ -14685,6 +14685,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2__authorization_authorize__["a" /* default */
 Vue.component('user-info', __webpack_require__(51));
 Vue.component("vote", __webpack_require__(54));
 Vue.component("answers", __webpack_require__(64));
+Vue.component("question", __webpack_require__(73));
 
 var app = new Vue({
   el: '#app'
@@ -60805,6 +60806,190 @@ if (false) {
 
 /***/ }),
 /* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(75)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Question.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-417b5bc6", Component.options)
+  } else {
+    hotAPI.reload("data-v-417b5bc6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['question'],
+
+    data: function data() {
+        return {
+            title: this.question.title,
+            body: this.question.body,
+            bodyHtml: this.question.body_html
+        };
+    }
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row justify-content-center" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "card-title" }, [
+            _c("div", { staticClass: "d-flex align-items-center" }, [
+              _c("h1", [_vm._v(_vm._s(_vm.title))]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "media" },
+            [
+              _c("vote", { attrs: { model: _vm.question, name: "question" } }),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body" }, [
+                _c("div", { domProps: { innerHTML: _vm._s(_vm.bodyHtml) } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-4" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-4" },
+                    [
+                      _c("user-info", {
+                        attrs: { model: _vm.question, label: "Asked" }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "ml-auto" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-secondary",
+          attrs: { href: "/questions" }
+        },
+        [_vm._v("Back to all Questions")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-417b5bc6", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
