@@ -42,7 +42,7 @@
                                         <a v-if="authorize('modify', question)" @click.prevent="edit" class="btn btn-sm btn-outline-info">
                                             Edit
                                         </a>
-                                        <button v-if="authorize('modify', question)" @click="destroy" class="btn btn-sm btn-outline-danger">
+                                        <button v-if="authorize('deleteQuestion', question)" @click="destroy" class="btn btn-sm btn-outline-danger">
                                             Delete
                                         </button>
                                     </div>
@@ -61,8 +61,13 @@
 </template>
 
 <script>
+import Vote from './Vote.vue';
+import UserInfo from './UserInfo.vue';
+
 export default {
     props: ['question'],
+
+    components: { Vote, UserInfo },
 
     data () {
         return {
