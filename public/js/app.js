@@ -59705,7 +59705,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__UserInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__UserInfo_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MEditor_vue__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MEditor_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__MEditor_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_modification_js__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_modification__ = __webpack_require__(16);
 //
 //
 //
@@ -59779,7 +59779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['question'],
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_modification_js__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_modification__["a" /* default */]],
 
     components: { Vote: __WEBPACK_IMPORTED_MODULE_0__Vote_vue___default.a, UserInfo: __WEBPACK_IMPORTED_MODULE_1__UserInfo_vue___default.a, MEditor: __WEBPACK_IMPORTED_MODULE_2__MEditor_vue___default.a },
 
@@ -59788,7 +59788,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             title: this.question.title,
             body: this.question.body,
             bodyHtml: this.question.body_html,
-            editing: false,
             id: this.question.id,
             beforeEditCache: {}
         };
@@ -59796,7 +59795,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     computed: {
-        insInvalid: function insInvalid() {
+        isInvalid: function isInvalid() {
             return this.body.length < 10 || this.title.length < 10;
         },
         endpoint: function endpoint() {
@@ -60508,7 +60507,7 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "tab-pane active", attrs: { id: "write" } }, [
+      _c("div", { staticClass: "tab-pane active", attrs: { id: "preview" } }, [
         _vm._v("Preview...")
       ])
     ])
@@ -60524,15 +60523,23 @@ var staticRenderFns = [
         _c("li", { staticClass: "nav-item" }, [
           _c(
             "a",
-            { staticClass: "nav-link active", attrs: { href: "#write" } },
+            {
+              staticClass: "nav-link active",
+              attrs: { "data-toggle": "tab", href: "#write" }
+            },
             [_vm._v("Write")]
           )
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _vm._v("Preview")
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: { "data-toggle": "tab", href: "#preview" }
+            },
+            [_vm._v("Preview")]
+          )
         ])
       ])
     ])

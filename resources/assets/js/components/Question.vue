@@ -66,7 +66,7 @@
 import Vote from './Vote.vue';
 import UserInfo from './UserInfo.vue';
 import MEditor from './MEditor.vue';
-import modification from '../mixins/modification.js';
+import modification from '../mixins/modification';
 
 
 export default {
@@ -81,14 +81,13 @@ export default {
             title: this.question.title,
             body: this.question.body,
             bodyHtml: this.question.body_html,
-            editing: false,
             id: this.question.id,
             beforeEditCache: {}
         }
     },
 
     computed: {
-        insInvalid () {
+        isInvalid () {
             return this.body.length < 10 || this.title.length < 10;
         },
 
