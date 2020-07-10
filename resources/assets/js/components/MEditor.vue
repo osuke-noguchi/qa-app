@@ -14,13 +14,22 @@
             <div class="tab-pane active" id="write">
                 <slot></slot>
             </div>
-            <div class="tab-pane active" id="preview">Preview...</div>
+            <div class="tab-pane active" v-html="preview" id="preview"></div>
         </div>
     </div>
 </template>
 
 <script>
+import MarkDownIn from 'markdown-it';
+const md = new MarkDownIn();
+
 export default {
-    props: ['body']
+    props: ['body'],
+
+    computed: {
+        preview () {
+            return md.render(this.body);
+        }
+    }
 }
 </script>
